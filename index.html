@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portofolio — Maher sigma</title>
+  <meta name="description" content="Portofolio pribadi — Nama Anda. Developer / Designer / Freelancer." />
+
+  <!-- Optional: Google Font (hapus jika ingin pakai default) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa4b2;
+      --accent:#6ee7b7;
+      --accent-2:#60a5fa;
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      --maxwidth:1100px;
+      --gap:24px;
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,var(--bg), #071026 120%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+
+    .container{
+      max-width:var(--maxwidth);
+      margin:32px auto;
+      padding:24px;
+    }
+
+    header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .logo{
+      width:56px;
+      height:56px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      color:#04283a;
+      box-shadow:0 6px 20px rgba(6,22,40,0.6);
+    }
+    .nav{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .nav a{
+      color:var(--muted);
+      text-decoration:none;
+      font-weight:600;
+      padding:6px 10px;
+      border-radius:8px;
+    }
+    .nav a:hover{ color: white; background: var(--glass); }
+
+    main{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:var(--gap);
+    }
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      border-radius: var(--radius);
+      padding:22px;
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+      align-items:center;
+    }
+    .hero-inner{
+      display:flex;
+      gap:20px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .headshot{
+      width:140px;
+      height:140px;
+      border-radius:18px;
+      background: url('https://via.placeholder.com/300') center/cover no-repeat;
+      flex: 0 0 140px;
+      box-shadow: 0 8px 20px rgba(2,8,20,0.6);
+      border:2px solid rgba(255,255,255,0.03);
+    }
+    .intro h1{
+      margin:0 0 6px 0;
+      font-size:26px;
+      letter-spacing:-0.4px;
+    }
+    .intro p{ margin:0; color:var(--muted); max-width:66ch; }
+
+    .cta{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:600;
+    }
+    .btn-primary{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#04283a;
+      box-shadow:0 8px 20px rgba(96,165,250,0.08);
+    }
+    .btn-outline{
+      border:1px solid rgba(255,255,255,0.06);
+      color:var(--muted);
+      background:transparent;
+    }
+
+    /* Cards grid */
+    .grid{
+      display:grid;
+      gap:16px;
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      padding:18px;
+      border-radius:12px;
+      box-shadow:0 6px 18px rgba(2,6,23,0.6);
+      border: 1px solid rgba(255,255,255,0.02);
+    }
+    h2{ margin:0 0 12px 0; font-size:18px; }
+
+    /* Projects */
+    .projects{
+      display:grid;
+      gap:12px;
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .project{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      padding:12px;
+      border-radius:12px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .project .thumb{
+      width:100px;
+      height:70px;
+      border-radius:10px;
+      background: url('https://via.placeholder.com/400x300') center/cover no-repeat;
+      flex:0 0 100px;
+    }
+    .project .meta{ flex:1; }
+    .project .meta h3{ margin:0 0 6px 0; font-size:16px; }
+    .project .meta p{ margin:0; color:var(--muted); font-size:14px; }
+
+    /* Skills & Contact */
+    .skills{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .skill{
+      padding:8px 10px;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.02), transparent);
+      border:1px solid rgba(255,255,255,0.03);
+      color:var(--muted);
+      font-weight:600;
+      font-size:13px;
+    }
+
+    .contact-form{
+      display:grid;
+      gap:10px;
+    }
+    .contact-form input, .contact-form textarea{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.04);
+      padding:12px;
+      border-radius:10px;
+      color:inherit;
+      outline:none;
+    }
+    .contact-form textarea{ min-height:120px; resize:vertical; }
+
+    footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:14px;
+      text-align:center;
+      padding:18px 0 40px;
+    }
+
+    /* Responsive */
+    @media(min-width:900px){
+      main{ gap:28px }
+      .hero{ grid-template-columns: 1fr; }
+      .hero-inner{ flex-wrap:nowrap; }
+      .grid{ grid-template-columns: 2fr 1fr; align-items:start; gap:var(--gap); }
+      .projects{ grid-template-columns: 1fr; }
+      .projects .project .thumb{ width:140px; height:90px; flex:0 0 140px; }
+    }
+
+    @media(min-width:1200px){
+      .hero{ padding:34px; }
+    }
+
+    /* small tweaks */
+    .muted{ color:var(--muted); font-size:13px }
+    .small{ font-size:13px; color:var(--muted) }
+    .tag{ font-size:12px; color:var(--muted); padding:6px 8px; border-radius:8px; border:1px solid rgba(255,255,255,0.02) }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">ND</div>
+        <div>
+          <div style="font-weight:700">Maher Muchtar </div>
+          <div class="small">Developer • Designer • Freelancer</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Navigation utama">
+        <a href="#projects">Proyek</a>
+        <a href="#about">Tentang</a>
+        <a href="#contact">Kontak</a>
+        <a class="btn btn-outline" href="resume.pdf" target="_blank" rel="noopener">Unduh CV</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero card" id="home" aria-labelledby="intro-title">
+        <div class="hero-inner">
+          <div class="headshot" role="img" aria-label="Foto profil (ganti URL di CSS)"></div>
+
+          <div class="intro">
+            <h1 id="intro-title">Halo, saya <span style="color:var(--accent);">Maher Muchtar</span></h1>
+            <p>Saya seorang <strong>pelajar  Muhammadiuah 03</strong> yang memiliki <strong>pasion dalam dunia desain grafis.</strong>Sya tertarik mengembangkan kreativitas visual dan kemampuan desain untuk menghasilkan karya  menarik,komunikatif,dan bermanfaat bagi semua orang.</p>
+
+            <div class="cta">
+              <a class="btn btn-primary" href="#projects">Lihat Proyek</a>
+              <a class="btn btn-outline" href="mailto:email@anda.com">Hubungi Saya</a>
+            </div>
+
+            <div style="margin-top:12px" class="small">
+              <span class="tag">Lokasi: Indonesia</span>
+              <span style="margin-left:8px" class="tag">Open to freelance</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="grid">
+        <!-- LEFT: Projects & About -->
+        <div>
+          <!-- Projects -->
+          <section id="projects" class="card" aria-labelledby="projects-title">
+            <h2 id="projects-title">Proyek Saya</h2>
+
+            <div class="projects">
+              <!-- Project 1 -->
+              <article class="project" aria-labelledby="p1">
+                <div class="thumb" style="background-image:url('https://via.placeholder.com/600x400?text=Project+1');"></div>
+                <div class="meta">
+                  <h3 id="p1">Sistem Informasi Sekolah</h3>
+                  <p class="muted">Aplikasi web untuk manajemen data siswa, nilai, dan absensi. Dibangun dengan HTML/CSS/JS & PHP (atau gunakan stack Anda).</p>
+                </div>
+              </article>
+
+              <!-- Project 2 -->
+              <article class="project" aria-labelledby="p2">
+                <div class="thumb" style="background-image:url('https://via.placeholder.com/600x400?text=Project+2');"></div>
+                <div class="meta">
+                  <h3 id="p2">Landing Page Produk</h3>
+                  <p class="muted">Landing Page adalah halaman web utama yang dirancang untuk menampilkan informasi singkat
+tentang produk atau layanan secara menarik.
+Menggunakan desain responsif dan elemen visual yang modern,
+halaman ini bertujuan untuk meningkatkan minat dan konversi pengunjung.</p>
+                </div>
+              </article>
+
+              <!-- Project 3 -->
+              <article class="project" aria-labelledby="p3">
+                <div class="thumb" style="background-image:url('https://via.placeholder.com/600x400?text=Project+3');"></div>
+                <div class="meta">
+                  <h3 id="p3">Aplikasi E-Commerce</h3>
+                  <p class="muted">Toko online kecil dengan sistem pembayaran dan dashboard admin sederhana.</p>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- About -->
+          <section id="about" class="card" style="margin-top:16px" aria-labelledby="about-title">
+            <h2 id="about-title">Tentang Saya</h2>
+            <p class="muted">Saya berpengalaman membuat website dan aplikasi yang berfokus pada performa dan pengalaman pengguna. Saya sedang belajar memahami dengan HTML, CSS, JavaScript, dan framework populer seperti React / Vue.</p>
+
+            <div style="margin-top:12px">
+              <h3 style="margin:0 0 8px 0">Skill</h3>
+              <div class="skills">
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">React</span>
+                <span class="skill">Node.js</span>
+                <span class="skill">UI/UX</span>
+                <span class="skill">Tailwind</span>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- RIGHT: Contact & Quick info -->
+        <aside>
+          <section class="card" aria-labelledby="quick-title">
+            <h2 id="quick-title">Ringkasan</h2>
+            <p class="muted">Freelance • Terbuka untuk kerja remote • Siap bergabung selama project-based atau kontrak</p>
+
+            <div style="margin-top:12px">
+              <h3 style="margin:0 0 8px 0">Quick links</h3>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <a class="small" href="#" onclick="alert('Ganti link ke GitHub Anda')">GitHub</a>
+                <a class="small" href="#" onclick="alert('Ganti link ke LinkedIn Anda')">LinkedIn</a>
+                <a class="small" href="#" onclick="alert('Ganti link ke Behance / Dribbble Anda')">Portfolio visual</a>
+              </div>
+            </div>
+          </section>
+
+          <section id="contact" class="card" style="margin-top:16px" aria-labelledby="contact-title">
+            <h2 id="contact-title">Kontak</h2>
+            <p class="muted">Kirim pesan singkat — saya biasanya merespon dalam 1–3 hari kerja.</p>
+
+            <!-- NOTE: form ini tidak mengirimkan data ke server.
+                 Untuk produksi, hubungkan ke backend atau layanan form (Formspree, Netlify Forms, dsb.) -->
+            <form class="contact-form" onsubmit="event.preventDefault(); handleContact(event)">
+              <input type="text" id="name" placeholder="Nama" required />
+              <input type="email" id="email" placeholder="Email" required />
+              <input type="text" id="subject" placeholder="Subjek" />
+              <textarea id="message" placeholder="Tulis pesan Anda..." required></textarea>
+
+              <div style="display:flex;gap:8px;justify-content:flex-end">
+                <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+              </div>
+            </form>
+
+            <div style="margin-top:12px" class="small">
+              <div>Email: <a href="mailto:email@anda.com" style="color:var(--accent)">mahermuchtar@gmail.com</a></div>
+              <div>Telepon: <span class="muted">+62 838-2799-4027</span></div>
+            </div>
+          </section>
+        </aside>
+      </div>
+
+    </main>
+
+    <footer>
+      © <span id="year"></span> Maher Sigma ❤️ • <span class="muted">Portofolio statis</span>
+    </footer>
+  </div>
+
+  <script>
+    // Tanggal otomatis
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Contoh handling form (lokal). Ganti sesuai integrasi Anda.
+    function handleContact(e){
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      // Validasi sederhana
+      if(!name || !email || !message){
+        alert('Tolong isi Nama, Email, dan Pesan.');
+        return;
+      }
+
+      // Demo: buka mailto (user akan mengirim lewat aplikasi email)
+      const mailto = `mailto:email@anda.com?subject=${encodeURIComponent(subject || 'Pesan dari portofolio')}&body=${encodeURIComponent('Nama: '+name+'\\nEmail: '+email+'\\n\\n'+message)}`;
+      window.location.href = mailto;
+    }
+  </script>
+</body>
+  </html>
