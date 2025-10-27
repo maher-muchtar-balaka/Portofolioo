@@ -209,7 +209,7 @@ footer {
   color: var(--muted);
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE UNTUK HP */
 @media (min-width: 900px) {
   .grid {
     grid-template-columns: 2fr 1fr;
